@@ -13,13 +13,16 @@ const app = express(),
       server = http.Server(app),
       io = socket(server);
 
-server.listen(config.port);
+// Vercel automatically provides the `PORT` environment variable.
+const port = process.env.PORT || 3000;
+
+server.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
 
 games = {};
 
 myIo(io);
-
-console.log(`Server listening on port ${config.port}`);
 
 const Handlebars = handlebars.create({
   extname: '.html', 
@@ -27,6 +30,7 @@ const Handlebars = handlebars.create({
   defaultLayout: false,
   helpers: {}
 });
+
 app.engine('html', Handlebars.engine);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, '..', 'front', 'views'));
