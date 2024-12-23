@@ -4,7 +4,7 @@ const http = require('http'),
       handlebars = require('express-handlebars'),
       socket = require('socket.io');
 
-const config = require('../config');
+const config = require('./config');
 
 const myIo = require('./sockets/io'),
       routes = require('./routes/routes');
