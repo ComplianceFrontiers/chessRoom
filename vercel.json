@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "name": "chess-site",
+    "builds": [
+      {
+        "src": "server.js",
+        "use": "@vercel/node"
+      }
+    ],
+    "env": {
+      "NODE_ENV": "production",
+      "DOTENV_PATH": ".env"
+    },
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/server.js"
+      }
+    ]
+  }
+  
